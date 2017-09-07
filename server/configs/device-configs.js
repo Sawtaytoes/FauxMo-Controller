@@ -5,18 +5,14 @@ const logger = require(`${dir.utils}logger`)
 const portConfiguration = port => () => port++
 const getNextPort = portConfiguration(config.getPort())
 
+const logAction = name => action => logger.log(`${name}:`, action)
+
 const deviceConfigs = [
 	{
-		name: 'FAAAAAAAAAAAKE',
+		name: 'Shark Stopper',
 		port: getNextPort(),
-		handler: action => logger.log('FAAAAAAAAAAAKE:', action),
+		handler: logAction('Shark Stopper'),
 	},
-
-	// {
-	// 	name: 'Office Fan',
-	// 	port: getNextPort(),
-	// 	handler: action => logger.log('Office Fan:', action),
-	// },
 ]
 
 module.exports = deviceConfigs
