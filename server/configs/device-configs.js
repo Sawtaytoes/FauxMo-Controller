@@ -1,3 +1,5 @@
+const axios = require('axios')
+
 const dir = require(`${global.baseDir}global-dirs`)
 const config = require(`${dir.configs}config-settings`)
 const logger = require(`${dir.utils}logger`)
@@ -8,22 +10,27 @@ const getNextPort = portConfiguration(config.getPort())
 const logDeviceState = name => state => logger.log(`${name}:`, state)
 
 const handleStateChange = (deviceName, deviceActions) => state => {
-	logDeviceState(name)(state)
+	logDeviceState(deviceName)(state)
 
-	fetch(`http://${deviceName}/${deviceActions[state]}`)
-	.then(response => response.text())
-	.then(text => logger.log(deviceName, text))
+	axios.request(`http://${deviceName}/${deviceActions[state]}`)
+	.then(({ data }) => logDeviceState(deviceName)(data))
+	.catch(logger.logError)
 }
 
 // const ON_OFF_ACTIONS = {
-// 	on: '/on',
-// 	off: '/off',
+// 	on: 'on',
+// 	off: 'off',
 // }
 
 const OPEN_CLOSE_ACTIONS = {
-	on: '/open',
-	off: '/close',
+	on: 'open',
+	off: 'close',
 }
+
+handleStateChange(
+	'shark-stopper',
+	OPEN_CLOSE_ACTIONS
+)('on')
 
 const deviceConfigs = [
 	{
