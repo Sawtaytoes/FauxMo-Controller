@@ -7,16 +7,16 @@ const getNextPort = portConfiguration(config.getPort())
 
 const deviceConfigs = [
 	{
-		name: 'Office Light',
+		name: 'FAAAAAAAAAAAKE',
 		port: getNextPort(),
-		handler: action => logger.log('Office Light:', action),
+		handler: action => logger.log('FAAAAAAAAAAAKE:', action),
 	},
 
-	{
-		name: 'Office Fan',
-		port: getNextPort(),
-		handler: action => logger.log('Office Fan:', action),
-	}
+	// {
+	// 	name: 'Office Fan',
+	// 	port: getNextPort(),
+	// 	handler: action => logger.log('Office Fan:', action),
+	// },
 ]
 
 module.exports = deviceConfigs
