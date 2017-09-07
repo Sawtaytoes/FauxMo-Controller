@@ -9,13 +9,11 @@ const getNextPort = portConfiguration(config.getPort())
 
 const logDeviceState = name => state => logger.log(`${name}:`, state)
 
-const handleStateChange = (deviceName, deviceActions) => state => {
-	logDeviceState(deviceName)(state)
-
+const handleStateChange = (deviceName, deviceActions) => state => (
 	axios.request(`http://${deviceName}/${deviceActions[state]}`)
 	.then(({ data }) => logDeviceState(deviceName)(data))
 	.catch(logger.logError)
-}
+)
 
 // const ON_OFF_ACTIONS = {
 // 	on: 'on',
