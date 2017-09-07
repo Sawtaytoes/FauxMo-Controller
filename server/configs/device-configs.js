@@ -25,11 +25,6 @@ const OPEN_CLOSE_ACTIONS = {
 	off: 'close',
 }
 
-handleStateChange(
-	'shark-stopper',
-	OPEN_CLOSE_ACTIONS
-)('on')
-
 const deviceConfigs = [
 	{
 		name: 'Shark Stopper',
