@@ -18,5 +18,4 @@ yarn start
 
 
 ## Requirements
-
 - Node.js

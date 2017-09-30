@@ -21,8 +21,6 @@ const configEnv = {
 	protocol: process.env.PROTOCOL,
 	hostname: process.env.HOSTNAME,
 	port: process.env.PORT,
-
-	apiToken: process.env.API_TOKEN,
 }
 
 Object.keys(configEnv)
@@ -44,6 +42,4 @@ module.exports = {
 
 	getSafeUrl: portFunc => portFunc().replace('0.0.0.0', 'localhost'),
 	getServerUrl: () => `${config.protocol}://${config.hostname}:${config.port}`,
-
-	getApiToken: () => config.apiToken,
 }
