@@ -8,5 +8,5 @@ export NODE_ENV=production
 git reset --hard HEAD
 git pull
 yarn
-chown -R www-data:www-data .
+chown -R pi:pi .
 pm2 reload ${PWD##*/}
