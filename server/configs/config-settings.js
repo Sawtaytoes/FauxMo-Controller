@@ -10,9 +10,9 @@ const configDefaults = {
 	env: 'production',        // Can be 'development' or 'production'.
 
 	//- Server (use this in your browser)
-	protocol: 'http',         // Using `https` requires valid certificates.
 	hostname: '0.0.0.0',      // Can be 0.0.0.0 for binding to all ports.
 	port: 11000,              // Port of webserver.
+	protocol: 'http',         // Using `https` requires valid certificates.
 }
 
 const configEnv = {
@@ -21,8 +21,6 @@ const configEnv = {
 	protocol: process.env.PROTOCOL,
 	hostname: process.env.HOSTNAME,
 	port: process.env.PORT,
-
-	apiToken: process.env.API_TOKEN,
 }
 
 Object.keys(configEnv)
@@ -44,6 +42,4 @@ module.exports = {
 
 	getSafeUrl: portFunc => portFunc().replace('0.0.0.0', 'localhost'),
 	getServerUrl: () => `${config.protocol}://${config.hostname}:${config.port}`,
-
-	getApiToken: () => config.apiToken,
 }
